@@ -3,10 +3,11 @@ package com.fizzbuzz;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.EMPTY_LIST;
+import static java.util.stream.Collectors.toList;
 import static junit.framework.Assert.assertEquals;
 
 
@@ -53,6 +54,7 @@ public class SeriesUtilityImplTest {
 
     @Test
     public void testOtherNumbers() {
+        mustMapToSelf(0);
         mustMapToSelf(1);
         mustMapToSelf(7);
     }
@@ -63,7 +65,17 @@ public class SeriesUtilityImplTest {
                 FIZZ, "7", "8", FIZZ, BUZZ,
                 "11", FIZZ, FIZZ, "14", FIZZBUZZ);
 
-        assertEquals(expected, seriesProducer.generateSeries(15).collect(Collectors.toList()));
+        assertEquals(expected, seriesProducer.generateSeries(15).collect(toList()));
+    }
+
+    @Test
+    public void testGenerateSeriesWithZeroRange() {
+        assertEquals(EMPTY_LIST, seriesProducer.generateSeries(0).collect(toList()));
+    }
+
+    @Test
+    public void testGenerateSeriesWithNegativeRange() {
+        assertEquals(EMPTY_LIST, seriesProducer.generateSeries(-2).collect(toList()));
     }
 
     @Test
