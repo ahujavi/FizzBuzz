@@ -23,7 +23,7 @@ public class SeriesUtilityImpl implements SeriesUtility {
         //using LinkedHashMap because we need to have control over the order in which we traverse this map
         transformers = new LinkedHashMap<>();
 
-        //need to instantiate dependencies in the absence of Spring dependency injection
+        //need to instantiate objects in the absence of Spring dependency injection
         transformers.put(FizzBuzzMatcher.getInstance(), i -> FIZZBUZZ);
         transformers.put(FizzMatcher.getInstance(), i -> FIZZ);
         transformers.put(BuzzMatcher.getInstance(), i -> BUZZ);

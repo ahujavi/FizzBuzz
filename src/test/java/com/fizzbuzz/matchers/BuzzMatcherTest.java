@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class BuzzMatcherTest {
 
-    BuzzMatcher matcher = BuzzMatcher.getInstance();
+    private BuzzMatcher matcher = BuzzMatcher.getInstance();
 
     @Test
     public void shouldMatchNumberDivisibleBy5() throws Exception {

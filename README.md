@@ -2,7 +2,7 @@ Solution for FizzBuzz coding test
 
 
 # Build
-maven clean install
+mvn clean install
 
 # Run
 Run the executable jar produced by the build command

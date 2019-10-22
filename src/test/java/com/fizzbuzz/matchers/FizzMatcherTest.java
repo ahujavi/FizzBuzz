@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 public class FizzMatcherTest {
 
-    FizzMatcher matcher = FizzMatcher.getInstance();
+    private FizzMatcher matcher = FizzMatcher.getInstance();
 
     @Test
     public void shouldMatchNumberDivisibleBy3() throws Exception {

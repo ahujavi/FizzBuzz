@@ -2,10 +2,12 @@ package com.fizzbuzz;
 
 import org.junit.Test;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.Arrays.asList;
 import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 
 public class SeriesUtilityImplTest {
@@ -14,7 +16,7 @@ public class SeriesUtilityImplTest {
     private static final String BUZZ = "Buzz";
     private static final String FIZZBUZZ = "FizzBuzz";
 
-    SeriesUtilityImpl seriesProducer = new SeriesUtilityImpl();
+    private SeriesUtilityImpl seriesProducer = new SeriesUtilityImpl();
 
     @Test
     public void testFizzMapping() {
@@ -53,6 +55,15 @@ public class SeriesUtilityImplTest {
     public void testOtherNumbers() {
         mustMapToSelf(1);
         mustMapToSelf(7);
+    }
+
+    @Test
+    public void testGenerateSeries() {
+        List<String> expected = asList("1", "2", FIZZ, "4", BUZZ,
+                FIZZ, "7", "8", FIZZ, BUZZ,
+                "11", FIZZ, FIZZ, "14", FIZZBUZZ);
+
+        assertEquals(expected, seriesProducer.generateSeries(15).collect(Collectors.toList()));
     }
 
     @Test
