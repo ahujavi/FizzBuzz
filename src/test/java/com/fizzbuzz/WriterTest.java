@@ -9,7 +9,7 @@ public class WriterTest {
     private Writer writer = new Writer();
 
     @Test
-    public void write() throws Exception {
+    public void testWrite() throws Exception {
         String input = "foo";
         writer.write(input, output -> assertEquals(input, output));
     }
