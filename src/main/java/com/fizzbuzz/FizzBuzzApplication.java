@@ -1,17 +1,20 @@
 package com.fizzbuzz;
 
-import java.util.stream.Stream;
+import java.util.function.Consumer;
 
 public class FizzBuzzApplication {
 
     public static void main(String[] args) {
         try {
-            SeriesUtility seriesUtility = new SeriesUtilityImpl();
+            //initialising objects manually in the absence of Spring dependency Injection
+            SequenceGenerator sequenceGenerator = new SequenceGenerator();
+            Transformer transformer = new Transformer();
+            Writer writer = new Writer();
+            Consumer<String> consoleWriter = System.out::println;
 
-            Stream<String> series = seriesUtility.generateSeries(100);
-            String result = seriesUtility.toPrettyString(series);
-
-            System.out.println(result);
+            sequenceGenerator.generateSeries(100)
+                    .mapToObj(transformer::transform)
+                    .forEach(s -> writer.write(s, consoleWriter));
         } catch (Exception e) {
             System.out.println("Internal Error!");
             e.printStackTrace();
