@@ -1,5 +1,6 @@
 Solution for FizzBuzz coding test
 
+I chose not to use Spring and hence object instance have been created manually instead of being auto wired.
 
 # Build
 mvn clean install
